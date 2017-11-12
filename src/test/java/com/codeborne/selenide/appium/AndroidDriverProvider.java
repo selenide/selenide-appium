@@ -1,33 +1,39 @@
 package com.codeborne.selenide.appium;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
-import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class AndroidDriverProvider implements WebDriverProvider {
+  private static final String USER_NAME = System.getProperty("user.name");
+  private static final String ACCESS_KEY = System.getProperty("access.key");
+  private static final String APP_ID = System.getProperty("app.id");
+
   @Override
   public WebDriver createDriver(DesiredCapabilities capabilities) {
     Configuration.startMaximized = false;
     Configuration.captureJavascriptErrors = false;
 
-    capabilities.setCapability(MobileCapabilityType.VERSION, "4.4.2");
-    capabilities.setCapability("automationName", "Appium");
-    capabilities.setCapability("platformName", "Android");
-    capabilities.setCapability("deviceName", "0123456789ABCDEF");
-    capabilities.setCapability(APP_PACKAGE, "com.android.calculator2");
-    capabilities.setCapability(APP_ACTIVITY, "com.android.calculator2.Calculator");
+    capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
+    capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
+    capabilities.setCapability(AndroidMobileCapabilityType.DEVICE_READY_TIMEOUT, 120);
+    capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
+    capabilities.setCapability("browserstack.debug", true);
+    capabilities.setCapability("realMobile", true);
+    capabilities.setCapability("device", "Google Pixel");
+    capabilities.setCapability(MobileCapabilityType.APP, "bs://" + APP_ID);
 
     try {
-      return new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+      return new AndroidDriver(new URL("https://" + USER_NAME + ":" + ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub"), capabilities);
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }

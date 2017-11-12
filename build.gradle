@@ -12,7 +12,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 
 ext {
   encoding = 'UTF-8'
-  log4jVersion = '2.8.2'
+  log4jVersion = '2.9.1'
 }
 
 compileJava {
@@ -35,9 +35,13 @@ repositories {
 }
 
 dependencies {
+  compile("org.apache.logging.log4j:log4j-api:$log4jVersion")
   compile('com.codeborne:selenide:4.8')
   compile('io.appium:java-client:5.0.4')
   testCompile('junit:junit:4.12')
+  testRuntime("org.apache.logging.log4j:log4j-core:$log4jVersion")
+  testRuntime("org.apache.logging.log4j:log4j-jul:$log4jVersion")
+  testRuntime("org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion")
 }
 
 task libs(type: Sync) {
@@ -73,4 +77,16 @@ artifacts {
   archives javadocJar
 }
 
-wrapper.gradleVersion = '4.3'
+test {
+  useJUnit()
+  reports.junitXml.enabled = true
+  reports.html.enabled = true
+  testLogging.showStandardStreams = true
+  systemProperties = System.properties + [
+    'file.encoding'            : encoding,
+    'java.util.logging.manager': 'org.apache.logging.log4j.jul.LogManager'
+  ]
+  maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
+
+wrapper.gradleVersion = '4.3.1'
