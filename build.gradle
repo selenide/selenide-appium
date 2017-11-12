@@ -86,7 +86,6 @@ test {
     'file.encoding'            : encoding,
     'java.util.logging.manager': 'org.apache.logging.log4j.jul.LogManager'
   ]
-  maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
 }
 
 wrapper.gradleVersion = '4.3.1'

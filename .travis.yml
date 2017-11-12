@@ -16,4 +16,4 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-  - ./gradlew clean check --info -Duser.name=${USER_NAME} -Daccess.key=${ACCESS_KEY} -Dapp.id=${APP_ID}
+  - ./gradlew clean check --info -Duser.name=${USER_NAME} -Daccess.key=${ACCESS_KEY} -Dapp.id=${APP_ID} -Dlocal=false

@@ -1,4 +1,4 @@
-package com.codeborne.selenide.appium;
+package com.codeborne.selenide.appium.provider;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverProvider;
@@ -13,7 +13,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class AndroidDriverProvider implements WebDriverProvider {
+public class RemoteAndroidDriverProvider implements WebDriverProvider {
   private static final String USER_NAME = System.getProperty("user.name");
   private static final String ACCESS_KEY = System.getProperty("access.key");
   private static final String APP_ID = System.getProperty("app.id");
