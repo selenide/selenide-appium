@@ -1,7 +1,6 @@
 branches:
   only:
     - master
-    - browserstack
 
 language: java
 jdk: oraclejdk8
