@@ -9,7 +9,7 @@ jdk: oraclejdk8
 env:
   global:
     - ANDROID_API_LEVEL=26
-    - ANDROID_EMULATOR_LEVEL=25
+    - ANDROID_EMULATOR_LEVEL=26
     - ANDROID_BUILD_TOOLS_VERSION=26.0.2
     - ANDROID_ABI=armeabi-v7a
     - ADB_INSTALL_TIMEOUT=5
@@ -34,13 +34,14 @@ android:
     - tools
     - build-tools-${ANDROID_BUILD_TOOLS_VERSION}
     - android-${ANDROID_API_LEVEL}
+    - sys-img-armeabi-v7a-android-26
 
 before_script:
   - android list targets
   - echo ANDROID_EMULATOR_LEVEL=${ANDROID_EMULATOR_LEVEL}
   - echo ANDROID_EMULATOR_LEVEL="${ANDROID_EMULATOR_LEVEL}"
   - echo ANDROID_EMULATOR_LEVEL="${ANDROID_ABI}"
-  - echo no | android create avd --force --name test --target android-25 --abi armeabi-v7a
+  - echo no | android create avd --force --name test --target android-26 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb devices
