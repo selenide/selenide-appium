@@ -37,6 +37,10 @@ android:
 
 before_script:
   - android list targets
+  - echo ANDROID_EMULATOR_LEVEL=${ANDROID_EMULATOR_LEVEL}
+  - echo ANDROID_EMULATOR_LEVEL='${ANDROID_EMULATOR_LEVEL}'
+  - echo ANDROID_EMULATOR_LEVEL="${ANDROID_EMULATOR_LEVEL}"
+  - echo ANDROID_EMULATOR_LEVEL="${ANDROID_ABI}"
   - echo no | android create avd --force --name test --target android-${ANDROID_EMULATOR_LEVEL} --abi ${ANDROID_ABI}
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
