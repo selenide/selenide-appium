@@ -38,11 +38,9 @@ android:
 before_script:
   - android list targets
   - echo ANDROID_EMULATOR_LEVEL=${ANDROID_EMULATOR_LEVEL}
-  - echo env.ANDROID_EMULATOR_LEVEL=${env.ANDROID_EMULATOR_LEVEL}
-  - echo ANDROID_EMULATOR_LEVEL='${ANDROID_EMULATOR_LEVEL}'
   - echo ANDROID_EMULATOR_LEVEL="${ANDROID_EMULATOR_LEVEL}"
   - echo ANDROID_EMULATOR_LEVEL="${ANDROID_ABI}"
-  - echo no | android create avd --force --name test --target android-${env.ANDROID_EMULATOR_LEVEL} --abi ${env.ANDROID_ABI}
+  - echo no | android create avd --force --name test --target android-25 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb devices
