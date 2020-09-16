@@ -44,7 +44,7 @@ android:
 before_script:
   # Set up KVM on linux for hardware acceleration. Manually here so it only happens for emulator tests, takes ~30s
   - travis_retry sudo -E apt-get -yq --no-install-suggests --no-install-recommends install bridge-utils libpulse0 libvirt-bin qemu-kvm virtinst ubuntu-vm-builder
-  - sudo adduser $USER libvirt
+  #- sudo adduser $USER libvirt
   - sudo adduser $USER kvm
   - android list targets
   - echo no | android create avd --force -n test -t android-26 --abi default/x86 -c 100M
