@@ -3,6 +3,7 @@ branches:
     - master
 
 language: android
+dist: trusty
 sudo: false
 jdk: oraclejdk8
 
@@ -25,7 +26,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 install:
-  - nvm install v7.10.0
+  - nvm install v12.19.0
 
 android:
   components:
@@ -41,7 +42,7 @@ before_script:
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb devices
-  - npm install -g appium
+  - npm install -g appium@1.18.2
   - appium &
 
 script:
