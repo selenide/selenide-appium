@@ -15,7 +15,7 @@ public class CalculatorTest extends BaseTest {
     $(By.id("op_add")).click();
     $(By.id("digit_4")).click();
     $(By.id("eq")).click();
-    $(By.id("result")).shouldHave(text("6"));
+    $(By.id("result")).shouldHave(text("666"));
   }
 
   @Test
@@ -35,6 +35,6 @@ public class CalculatorTest extends BaseTest {
     calculatorPage.plus.shouldHave(size(1)).get(0).click();
     calculatorPage.number4.shouldHave(size(1)).get(0).click();
     calculatorPage.equal.shouldHave(size(1)).get(0).click();
-    calculatorPage.result.shouldHave(size(1)).get(0).shouldHave(text("6"));
+    calculatorPage.result.shouldHave(size(1)).get(0).shouldHave(text("zopa"));
   }
 }
