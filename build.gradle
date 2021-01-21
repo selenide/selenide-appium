@@ -1,11 +1,14 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+  id 'idea'
+  id 'java-library'
+  id 'maven'
+}
 
 defaultTasks 'check', 'test', 'install'
 
 group = 'com.codeborne'
 description = 'Selenide adaptor for Appium framework'
-version = '1.6.0'
+version = '1.6.1'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,9 +44,9 @@ repositories {
 }
 
 dependencies {
-  implementation('com.codeborne:selenide:5.17.4')
+  api('com.codeborne:selenide:5.17.4')
+  api('io.appium:java-client:7.4.1')
   implementation('net.bytebuddy:byte-buddy:1.10.19')
-  implementation('io.appium:java-client:7.4.1')
   testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
   testImplementation("org.assertj:assertj-core:3.18.1")
   testImplementation('org.mockito:mockito-core:3.7.0')
