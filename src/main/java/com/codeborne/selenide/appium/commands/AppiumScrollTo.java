@@ -1,7 +1,6 @@
 package com.codeborne.selenide.appium.commands;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.Stopwatch;
 import com.codeborne.selenide.commands.ScrollTo;
 import com.codeborne.selenide.impl.WebElementSource;
 import io.appium.java_client.AppiumDriver;
@@ -24,7 +23,6 @@ import static java.util.Collections.singletonList;
 public class AppiumScrollTo extends ScrollTo {
 
   private AppiumDriver appiumDriver;
-  private Stopwatch stopwatch;
 
   @Override
   @Nonnull
@@ -36,18 +34,12 @@ public class AppiumScrollTo extends ScrollTo {
 
     this.appiumDriver = appiumDriverOptional.get();
 
-    stopwatch = new Stopwatch(60000);
-
     String previousPageSource = "";
-    while (isElementNotDisplayed(locator) && isNotEndOfPage(previousPageSource) && isTimeOutNotReached()) {
+    while (isElementNotDisplayed(locator) && isNotEndOfPage(previousPageSource)) {
       previousPageSource = appiumDriver.getPageSource();
       performScroll();
     }
     return proxy;
-  }
-
-  private boolean isTimeOutNotReached(){
-    return !stopwatch.isTimeoutReached();
   }
 
   private boolean isElementNotDisplayed(WebElementSource locator){
