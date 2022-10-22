@@ -6,6 +6,7 @@ import com.codeborne.selenide.impl.WebElementSource;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 
@@ -33,20 +34,21 @@ public class AppiumScrollTo extends ScrollTo {
     }
 
     this.appiumDriver = appiumDriverOptional.get();
+    WebElement element = locator.getWebElement();
 
     String previousPageSource = "";
-    while (isElementNotDisplayed(locator) && isNotEndOfPage(previousPageSource)) {
+    while (isElementNotDisplayed(element) && isNotEndOfPage(previousPageSource)) {
       previousPageSource = appiumDriver.getPageSource();
       performScroll();
     }
     return proxy;
   }
 
-  private boolean isElementNotDisplayed(WebElementSource locator){
+  private boolean isElementNotDisplayed(WebElement element){
     try{
-      return !locator.getWebElement().isDisplayed();
+      return !element.isDisplayed();
     }
-    catch (NullPointerException | NoSuchElementException exception){
+    catch (NoSuchElementException noSuchElementException){
       return true;
     }
   }
