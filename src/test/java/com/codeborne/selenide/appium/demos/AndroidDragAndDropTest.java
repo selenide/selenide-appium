@@ -1,6 +1,8 @@
 package com.codeborne.selenide.appium.demos;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -30,5 +32,14 @@ public class AndroidDragAndDropTest extends AbstractApiDemosTest {
     $(dragText)
         .shouldBe(visible)
         .shouldHave(text("Dropped!"));
+  }
+
+  @Test
+  public void scroll(){
+    $(By.xpath(".//*[@text='Views']")).click();
+    $(By.xpath(".//*[@text='Tabs']")).scrollTo().click();
+
+    $(By.xpath(".//*[@text='1. Content By Id']"))
+      .shouldHave(visible);
   }
 }
