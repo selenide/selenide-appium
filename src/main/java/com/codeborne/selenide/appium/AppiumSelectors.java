@@ -59,4 +59,51 @@ public class AppiumSelectors {
     return new WithName(elementText);
   }
 
+  @CheckReturnValue
+  @Nonnull
+  public static By byTagAndAttribute(String tag, String attributeName, String attributeValue) {
+    return new ByTagAndAttribute(tag, attributeName, attributeValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By byAttribute(String attributeName, String attributeValue) {
+    return new ByAttribute(attributeName, attributeValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By withTagAndAttribute(String tag, String attributeName, String attributeValue) {
+    return new WithTagAndAttribute(tag, attributeName, attributeValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By withAttribute(String attributeName, String attributeValue) {
+    return new WithAttribute(attributeName, attributeValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By byTagAndContentDescription(String tag, String contentDescriptionValue) {
+    return new ByTagAndContentDescription(tag, contentDescriptionValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By withTagAndContentDescription(String tag, String contentDescriptionValue) {
+    return new WithTagAndContentDescription(tag, contentDescriptionValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By byContentDescription(String contentDescriptionValue) {
+    return new ByContentDescription(contentDescriptionValue);
+  }
+
+  @CheckReturnValue
+  @Nonnull
+  public static By withContentDescription(String contentDescriptionValue) {
+    return new WithContentDescription(contentDescriptionValue);
+  }
 }
