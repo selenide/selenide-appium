@@ -13,6 +13,6 @@ public class ByName extends ByTagAndName{
   @CheckReturnValue
   @Nonnull
   public String toString() {
-    return "by name: " + elementNameAttribute;
+    return "by name: " + attributeValue;
   }
 }

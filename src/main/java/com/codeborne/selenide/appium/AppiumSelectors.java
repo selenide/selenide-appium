@@ -37,26 +37,26 @@ public class AppiumSelectors {
 
   @CheckReturnValue
   @Nonnull
-  public static By byTagAndName(String tag, String elementText) {
-    return new ByTagAndName(tag, elementText);
+  public static By byTagAndName(String tag, String nameAttributeValue) {
+    return new ByTagAndName(tag, nameAttributeValue);
   }
 
   @CheckReturnValue
   @Nonnull
-  public static By byName(String elementText) {
-    return new ByName(elementText);
+  public static By byName(String nameAttributeValue) {
+    return new ByName(nameAttributeValue);
   }
 
   @CheckReturnValue
   @Nonnull
-  public static By withTagAndName(String tag, String elementText) {
-    return new WithTagAndName(tag, elementText);
+  public static By withTagAndName(String tag, String nameAttributeValue) {
+    return new WithTagAndName(tag, nameAttributeValue);
   }
 
   @CheckReturnValue
   @Nonnull
-  public static By withName(String elementText) {
-    return new WithName(elementText);
+  public static By withName(String nameAttributeValue) {
+    return new WithName(nameAttributeValue);
   }
 
   @CheckReturnValue

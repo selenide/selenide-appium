@@ -13,6 +13,6 @@ public class ByText extends ByTagAndText{
   @CheckReturnValue
   @Nonnull
   public String toString() {
-    return "by text: " + elementText;
+    return "by text: " + attributeValue;
   }
 }

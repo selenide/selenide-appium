@@ -12,6 +12,6 @@ public class WithName extends WithTagAndName {
   @CheckReturnValue
   @Nonnull
   public String toString() {
-    return "with name: " + elementNameAttribute;
+    return "with name: " + attributeValue;
   }
 }

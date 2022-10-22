@@ -12,6 +12,6 @@ public class WithText extends WithTagAndText {
   @CheckReturnValue
   @Nonnull
   public String toString() {
-    return "with text: " + elementText;
+    return "with text: " + attributeValue;
   }
 }
