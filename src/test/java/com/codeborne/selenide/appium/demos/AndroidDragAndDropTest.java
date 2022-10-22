@@ -1,8 +1,6 @@
 package com.codeborne.selenide.appium.demos;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -15,9 +13,9 @@ import static com.codeborne.selenide.Selenide.$;
  * Copied from https://github.com/appium/sample-code/blob/master/sample-code/examples/java/junit/src/test/java/com/saucelabs/appium/AndroidDragAndDrop.java
  * and modified to use Selenide framework.
  */
-public class AndroidDragAndDropTest extends AbstractApiDemosTest {
+class AndroidDragAndDropTest extends AbstractApiDemosTest {
   @Test
-  public void dragAndDrop() {
+   void dragAndDrop() {
     $(By.xpath(".//*[@text='Views']")).click();
     $(By.xpath(".//*[@text='Drag and Drop']")).click();
 
@@ -35,7 +33,7 @@ public class AndroidDragAndDropTest extends AbstractApiDemosTest {
   }
 
   @Test
-  public void scroll(){
+   void testScrollToElement(){
     $(By.xpath(".//*[@text='Views']")).click();
     $(By.xpath(".//*[@text='Tabs']")).scrollTo().click();
 
