@@ -28,7 +28,7 @@ class AppiumSelectorsTest {
     By by = AppiumSelectors.withTagAndText("*","selen'ide-app'ium");
     assertThat(by)
       .isInstanceOf(By.ByXPath.class)
-      .hasToString("by tag: *; with text: selen'ide-app'ium");
+      .hasToString("by tag: *; by attribute: text; with value: selen'ide-app'ium");
   }
 
   @Test
@@ -36,7 +36,7 @@ class AppiumSelectorsTest {
     By by = AppiumSelectors.withText("selen'ide-app'ium");
     assertThat(by)
       .isInstanceOf(By.ByXPath.class)
-      .hasToString("by tag: *; with text: selen'ide-app'ium");
+      .hasToString("by tag: *; by attribute: text; with value: selen'ide-app'ium");
   }
 
   @Test
