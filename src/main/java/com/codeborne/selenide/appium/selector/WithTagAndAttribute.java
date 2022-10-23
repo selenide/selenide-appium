@@ -25,10 +25,4 @@ public class WithTagAndAttribute extends By.ByXPath{
   public String toString() {
     return "by tag: " + tag + "; by attribute: " + attributeName + "; with value: " + attributeValue;
   }
-
-  @CheckReturnValue
-  @Nonnull
-  String getXPath() {
-    return super.toString().replace("By.xpath: ", "");
-  }
 }

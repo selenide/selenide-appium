@@ -15,11 +15,4 @@ public class WithTagAndText extends WithTagAndAttribute {
   public String toString() {
     return "by tag: " + tag + "; with text: " + attributeValue;
   }
-
-  @Override
-  @CheckReturnValue
-  @Nonnull
-  String getXPath() {
-    return super.toString().replace("By.xpath: ", "");
-  }
 }
