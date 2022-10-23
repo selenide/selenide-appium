@@ -40,12 +40,13 @@ public class AppiumScrollTo extends ScrollTo {
     while (isElementNotDisplayed(locator) && isNotEndOfPage(previousPageSource) && isLessThanMaxSwipeCount(currentSwipeCount)) {
       previousPageSource = appiumDriver.getPageSource();
       performScroll();
+      currentSwipeCount++;
     }
     return proxy;
   }
 
   private boolean isLessThanMaxSwipeCount(int currentSwipeCount) {
-    final int maxSwipeCount = 30;
+    final int maxSwipeCount = 2;
     return currentSwipeCount < maxSwipeCount;
   }
 
