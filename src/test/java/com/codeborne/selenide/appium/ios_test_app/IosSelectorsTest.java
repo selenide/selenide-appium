@@ -1,6 +1,5 @@
 package com.codeborne.selenide.appium.ios_test_app;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.Test;
@@ -13,12 +12,10 @@ import static com.codeborne.selenide.appium.AppiumSelectors.*;
 class IosSelectorsTest {
 
   @Test
-  void addNumbers() {
+  void testAppiumSelectorsInIosApp() {
     closeWebDriver();
     Configuration.browser = IosTestAppDriverFactory.class.getName();
     Configuration.browserSize = null;
-    WebDriverRunner.addListener(new AbstractWebDriverEventListener() {
-    });
     open();
     $(byTagAndName("*","IntegerA")).setValue("2");
     $(byName("IntegerB")).setValue("4");
