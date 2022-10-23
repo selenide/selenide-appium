@@ -46,7 +46,7 @@ public class AppiumScrollTo extends ScrollTo {
   }
 
   private boolean isLessThanMaxSwipeCount(int currentSwipeCount) {
-    final int maxSwipeCount = 2;
+    final int maxSwipeCount = 30;
     return currentSwipeCount < maxSwipeCount;
   }
 
