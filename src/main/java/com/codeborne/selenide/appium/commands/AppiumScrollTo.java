@@ -22,8 +22,6 @@ import static java.util.Collections.singletonList;
 @ParametersAreNonnullByDefault
 public class AppiumScrollTo extends ScrollTo {
 
-
-
   @Override
   @Nonnull
   public SelenideElement execute(SelenideElement proxy, WebElementSource locator, @Nullable Object[] args) {
@@ -31,7 +29,6 @@ public class AppiumScrollTo extends ScrollTo {
     if (!appiumDriverOptional.isPresent()) {
       return super.execute(proxy, locator, args);
     }
-
     AppiumDriver appiumDriver = appiumDriverOptional.get();
 
     int currentSwipeCount = 0;
@@ -56,7 +53,7 @@ public class AppiumScrollTo extends ScrollTo {
     try{
       return !locator.getWebElement().isDisplayed();
     }
-    catch (NullPointerException | NoSuchElementException exception){
+    catch (NoSuchElementException noSuchElementException){
       return true;
     }
   }
