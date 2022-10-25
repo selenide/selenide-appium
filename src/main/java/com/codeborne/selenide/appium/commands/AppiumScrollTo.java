@@ -22,7 +22,7 @@ import static java.util.Collections.singletonList;
 @ParametersAreNonnullByDefault
 public class AppiumScrollTo extends ScrollTo {
 
-  private AppiumDriver appiumDriver;
+
 
   @Override
   @Nonnull
@@ -32,14 +32,16 @@ public class AppiumScrollTo extends ScrollTo {
       return super.execute(proxy, locator, args);
     }
 
-    this.appiumDriver = appiumDriverOptional.get();
+    AppiumDriver appiumDriver = appiumDriverOptional.get();
 
     int currentSwipeCount = 0;
     String previousPageSource = "";
 
-    while (isElementNotDisplayed(locator) && isNotEndOfPage(previousPageSource) && isLessThanMaxSwipeCount(currentSwipeCount)) {
+    while (isElementNotDisplayed(locator)
+      && isNotEndOfPage(appiumDriver, previousPageSource)
+      && isLessThanMaxSwipeCount(currentSwipeCount)) {
       previousPageSource = appiumDriver.getPageSource();
-      performScroll();
+      performScroll(appiumDriver);
       currentSwipeCount++;
     }
     return proxy;
@@ -59,16 +61,16 @@ public class AppiumScrollTo extends ScrollTo {
     }
   }
 
-  private boolean isNotEndOfPage(String initialPageSource){
+  private boolean isNotEndOfPage(AppiumDriver appiumDriver, String initialPageSource){
     return !initialPageSource.equals(appiumDriver.getPageSource());
   }
 
-  private Dimension getMobileDeviceSize() {
+  private Dimension getMobileDeviceSize(AppiumDriver appiumDriver) {
     return appiumDriver.manage().window().getSize();
   }
 
-  private void performScroll(){
-    Dimension size = getMobileDeviceSize();
+  private void performScroll(AppiumDriver appiumDriver){
+    Dimension size = getMobileDeviceSize(appiumDriver);
     PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
     Sequence sequenceToPerformScroll = getSequenceToPerformScroll(finger, size);
     appiumDriver.perform(singletonList(sequenceToPerformScroll));
