@@ -78,7 +78,7 @@ public class AppiumScrollTo extends ScrollTo {
       .addAction(finger.createPointerMove(ofMillis(0),
         PointerInput.Origin.viewport(), size.getWidth() / 2, size.getHeight() / 2))
       .addAction(finger.createPointerDown(PointerInput.MouseButton.MIDDLE.asArg()))
-      .addAction(finger.createPointerMove(ofMillis(500),
+      .addAction(finger.createPointerMove(ofMillis(200),
         PointerInput.Origin.viewport(), size.getWidth() / 2, (int)(size.getHeight() * 0.25)))
       .addAction(finger.createPointerUp(PointerInput.MouseButton.MIDDLE.asArg()));
   }
