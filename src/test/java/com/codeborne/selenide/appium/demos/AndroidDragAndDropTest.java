@@ -13,9 +13,9 @@ import static com.codeborne.selenide.Selenide.$;
  * Copied from https://github.com/appium/sample-code/blob/master/sample-code/examples/java/junit/src/test/java/com/saucelabs/appium/AndroidDragAndDrop.java
  * and modified to use Selenide framework.
  */
-public class AndroidDragAndDropTest extends AbstractApiDemosTest {
+class AndroidDragAndDropTest extends AbstractApiDemosTest {
   @Test
-  public void dragAndDrop() {
+  void dragAndDrop() {
     $(By.xpath(".//*[@text='Views']")).click();
     $(By.xpath(".//*[@text='Drag and Drop']")).click();
 
