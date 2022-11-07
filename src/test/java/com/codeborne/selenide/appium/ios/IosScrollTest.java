@@ -1,4 +1,4 @@
-package com.codeborne.selenide.appium.ios_test_app;
+package com.codeborne.selenide.appium.ios;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
@@ -10,14 +10,15 @@ import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.$;
 
 @ExtendWith(TextReportExtension.class)
 class IosScrollTest {
 
   @Test
-  void testScrollToElementOnIos(){
+  void testScrollToElementOnIos() {
     closeWebDriver();
     Configuration.browser = IosTestAppDriverFactory.class.getName();
     Configuration.browserSize = null;

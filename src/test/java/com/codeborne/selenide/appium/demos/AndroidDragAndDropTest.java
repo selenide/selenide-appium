@@ -4,9 +4,9 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 /**
@@ -34,7 +34,7 @@ class AndroidDragAndDropTest extends AbstractApiDemosTest {
   }
 
   @Test
-   void testScrollToElement(){
+   void testScrollToElement() {
     $(By.xpath(".//*[@text='Views']")).click();
     $(By.xpath(".//*[@text='Tabs']")).scrollTo().click();
 

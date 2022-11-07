@@ -16,7 +16,7 @@ import java.net.URL;
 
 import static com.codeborne.selenide.appium.SampleApp.downloadIosApp;
 
-class IosTestAppDriverFactory implements DriverFactory {
+public class IosTestAppDriverFactory implements DriverFactory {
   @Override
   public void setupWebdriverBinary() {
   }

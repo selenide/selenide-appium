@@ -1,6 +1,7 @@
-package com.codeborne.selenide.appium.ios_test_app;
+package com.codeborne.selenide.appium.iostestsetup;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.appium.ios.IosTestAppDriverFactory;
 import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;

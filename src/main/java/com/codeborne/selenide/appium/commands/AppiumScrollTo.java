@@ -49,16 +49,16 @@ public class AppiumScrollTo extends ScrollTo {
     return currentSwipeCount < maxSwipeCount;
   }
 
-  private boolean isElementNotDisplayed(WebElementSource locator){
-    try{
+  private boolean isElementNotDisplayed(WebElementSource locator) {
+    try {
       return !locator.getWebElement().isDisplayed();
     }
-    catch (NoSuchElementException noSuchElementException){
+    catch (NoSuchElementException noSuchElementException) {
       return true;
     }
   }
 
-  private boolean isNotEndOfPage(AppiumDriver appiumDriver, String initialPageSource){
+  private boolean isNotEndOfPage(AppiumDriver appiumDriver, String initialPageSource) {
     return !initialPageSource.equals(appiumDriver.getPageSource());
   }
 
@@ -66,20 +66,20 @@ public class AppiumScrollTo extends ScrollTo {
     return appiumDriver.manage().window().getSize();
   }
 
-  private void performScroll(AppiumDriver appiumDriver){
+  private void performScroll(AppiumDriver appiumDriver) {
     Dimension size = getMobileDeviceSize(appiumDriver);
     PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
     Sequence sequenceToPerformScroll = getSequenceToPerformScroll(finger, size);
     appiumDriver.perform(singletonList(sequenceToPerformScroll));
   }
 
-  private Sequence getSequenceToPerformScroll(PointerInput finger, Dimension size){
+  private Sequence getSequenceToPerformScroll(PointerInput finger, Dimension size) {
     return new Sequence(finger, 1)
       .addAction(finger.createPointerMove(ofMillis(0),
         PointerInput.Origin.viewport(), size.getWidth() / 2, size.getHeight() / 2))
       .addAction(finger.createPointerDown(PointerInput.MouseButton.MIDDLE.asArg()))
       .addAction(finger.createPointerMove(ofMillis(200),
-        PointerInput.Origin.viewport(), size.getWidth() / 2, (int)(size.getHeight() * 0.25)))
+        PointerInput.Origin.viewport(), size.getWidth() / 2, (int) (size.getHeight() * 0.25)))
       .addAction(finger.createPointerUp(PointerInput.MouseButton.MIDDLE.asArg()));
   }
 }
