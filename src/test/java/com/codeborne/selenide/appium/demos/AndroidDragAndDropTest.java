@@ -10,12 +10,13 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 /**
- * Copied from https://github.com/appium/sample-code/blob/master/sample-code/examples/java/junit/src/test/java/com/saucelabs/appium/AndroidDragAndDrop.java
+ * Copied from <a href="https://bit.ly/3NE6QsD">Appium repository</a>
  * and modified to use Selenide framework.
  */
 class AndroidDragAndDropTest extends AbstractApiDemosTest {
+
   @Test
-   void dragAndDrop() {
+  void dragAndDrop() {
     $(By.xpath(".//*[@text='Views']")).click();
     $(By.xpath(".//*[@text='Drag and Drop']")).click();
 
