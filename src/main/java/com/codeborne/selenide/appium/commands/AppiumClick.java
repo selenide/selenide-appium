@@ -34,12 +34,10 @@ public class AppiumClick extends Click {
 
     if (args == null || args.length == 0) {
       click(locator.driver(), webElement);
-    }
-    else if (args.length == 1) {
+    } else if (args.length == 1) {
       AppiumClickOptions appiumClickOptions = firstOf(args);
       click(locator.driver(), webElement, appiumClickOptions);
-    }
-    else {
+    } else {
       throw new IllegalArgumentException("Unsupported click arguments: " + Arrays.toString(args));
     }
     return proxy;
@@ -101,7 +99,7 @@ public class AppiumClick extends Click {
   private Sequence getSequenceToPerformTap(PointerInput finger, Point size, int offsetX, int offsetY) {
     return new Sequence(finger, 1)
       .addAction(finger.createPointerMove(ofMillis(0),
-        PointerInput.Origin.viewport(), size.getX() + offsetX,  size.getY() + offsetY))
+        PointerInput.Origin.viewport(), size.getX() + offsetX, size.getY() + offsetY))
       .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
       .addAction(new Pause(finger, ofMillis(200)))
       .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
@@ -119,8 +117,7 @@ public class AppiumClick extends Click {
   protected WebElement findElement(WebElementSource locator) {
     if (instanceOf(locator.driver(), AppiumDriver.class)) {
       return locator.getWebElement();
-    }
-    else {
+    } else {
       return super.findElement(locator);
     }
   }
