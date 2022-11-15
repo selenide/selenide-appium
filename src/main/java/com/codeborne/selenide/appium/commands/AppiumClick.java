@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 
+import static com.codeborne.selenide.appium.WebdriverUnwrapper.cast;
 import static com.codeborne.selenide.appium.WebdriverUnwrapper.instanceOf;
 import static com.codeborne.selenide.commands.Util.firstOf;
 import static java.time.Duration.ofMillis;
@@ -91,9 +92,8 @@ public class AppiumClick extends Click {
   }
 
   private void perform(Driver driver, Sequence sequence) {
-    if (instanceOf(driver, AppiumDriver.class)) {
-      ((AppiumDriver) driver.getWebDriver()).perform(singletonList(sequence));
-    }
+    cast(driver, AppiumDriver.class)
+      .ifPresent(value -> value.perform(singletonList(sequence)));
   }
 
   private Sequence getSequenceToPerformTap(PointerInput finger, Point size, int offsetX, int offsetY) {
