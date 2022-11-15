@@ -2,7 +2,6 @@ package com.codeborne.selenide.appium.ios;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.appium.AppiumClickOptions;
-import com.codeborne.selenide.appium.iostestsetup.IosAppBaseTestUp;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
