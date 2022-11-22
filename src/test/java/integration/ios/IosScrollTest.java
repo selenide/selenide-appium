@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -19,6 +18,6 @@ class IosScrollTest extends BaseIOSTest {
       .click();
     $(By.xpath("//*[contains(@name,'Ocean')]"))
       .scrollTo()
-      .shouldHave(text("Indian Ocean"));
+      .shouldHave(visible);
   }
 }
