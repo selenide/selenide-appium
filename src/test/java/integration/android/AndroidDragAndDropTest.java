@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
  * and modified to use Selenide framework.
  */
 class AndroidDragAndDropTest extends BaseApiDemosTest {
+
   @Test
   void dragAndDrop() {
     $(By.xpath(".//*[@text='Views']")).click();
@@ -30,5 +31,14 @@ class AndroidDragAndDropTest extends BaseApiDemosTest {
     $(dragText)
         .shouldBe(visible)
         .shouldHave(text("Dropped!"));
+  }
+
+  @Test
+   void testScrollToElement() {
+    $(By.xpath(".//*[@text='Views']")).click();
+    $(By.xpath(".//*[@text='Tabs']")).scrollTo().click();
+
+    $(By.xpath(".//*[@text='1. Content By Id']"))
+      .shouldHave(visible);
   }
 }
