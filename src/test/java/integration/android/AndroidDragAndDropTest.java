@@ -32,13 +32,4 @@ class AndroidDragAndDropTest extends BaseApiDemosTest {
         .shouldBe(visible)
         .shouldHave(text("Dropped!"));
   }
-
-  @Test
-   void testScrollToElement() {
-    $(By.xpath(".//*[@text='Views']")).click();
-    $(By.xpath(".//*[@text='Tabs']")).scrollTo().click();
-
-    $(By.xpath(".//*[@text='1. Content By Id']"))
-      .shouldHave(visible);
-  }
 }
