@@ -18,7 +18,7 @@ import java.time.Duration;
 
 import static integration.Apps.downloadIosApp;
 
-public class IosTestAppDriverFactory implements DriverFactory {
+class IosTestAppDriverFactory implements DriverFactory {
   @Override
   public void setupWebdriverBinary() {
   }

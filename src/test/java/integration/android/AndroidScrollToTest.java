@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-class AndroidScrollToTest extends BaseApiDemosTest{
+class AndroidScrollToTest extends BaseApiDemosTest {
 
   @Test
   void testScrollToElement() {
