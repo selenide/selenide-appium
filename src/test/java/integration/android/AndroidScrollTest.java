@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 @ExtendWith(TextReportExtension.class)
-class AndroidScrollToTest extends BaseApiDemosTest {
+class AndroidScrollTest extends BaseApiDemosTest {
 
   @Test
   void testScrollToElement() {
