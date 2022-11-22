@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 @ExtendWith(TextReportExtension.class)
-class IosScrollTest extends BaseIOSTest{
+class IosScrollTest extends BaseIOSTest {
 
   @Test
   void testScrollToElementOnIos() {

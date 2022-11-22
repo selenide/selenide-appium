@@ -14,7 +14,6 @@ import static com.codeborne.selenide.Selenide.$;
  * and modified to use Selenide framework.
  */
 class AndroidDragAndDropTest extends BaseApiDemosTest {
-
   @Test
   void dragAndDrop() {
     $(By.xpath(".//*[@text='Views']")).click();
