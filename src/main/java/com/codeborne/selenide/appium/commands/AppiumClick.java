@@ -3,6 +3,7 @@ package com.codeborne.selenide.appium.commands;
 import com.codeborne.selenide.Driver;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.AppiumClickOptions;
+import com.codeborne.selenide.appium.WebdriverUnwrapper;
 import com.codeborne.selenide.commands.Click;
 import com.codeborne.selenide.impl.WebElementSource;
 import io.appium.java_client.AppiumDriver;
@@ -19,7 +20,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 
-import static com.codeborne.selenide.appium.WebdriverUnwrapper.cast;
 import static com.codeborne.selenide.appium.WebdriverUnwrapper.instanceOf;
 import static com.codeborne.selenide.commands.Util.firstOf;
 import static java.time.Duration.ofMillis;
@@ -92,8 +92,9 @@ public class AppiumClick extends Click {
   }
 
   private void perform(Driver driver, Sequence sequence) {
-    cast(driver, AppiumDriver.class)
-      .ifPresent(value -> value.perform(singletonList(sequence)));
+    // TODO WTF? Why we do nothing if it is not AppiumDriver
+    WebdriverUnwrapper.cast(driver.getWebDriver(), AppiumDriver.class)
+      .ifPresent(it -> it.perform(singletonList(sequence)));
   }
 
   private Sequence getSequenceToPerformTap(PointerInput finger, Point size, int offsetX, int offsetY) {

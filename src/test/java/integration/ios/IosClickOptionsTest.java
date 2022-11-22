@@ -1,4 +1,4 @@
-package com.codeborne.selenide.appium.ios;
+package integration.ios;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.appium.AppiumClickOptions;
@@ -7,8 +7,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class IosClickOptionsTest extends IosAppBaseTestUp {
-
+class IosClickOptionsTest extends BaseIOSTest {
   @Test
   void testIosTap() {
     $(By.name("IntegerA")).sendKeys("3");

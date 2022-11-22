@@ -1,20 +1,19 @@
-package com.codeborne.selenide.appium.demos;
+package integration.android;
 
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 /**
  * Copied from <a href="https://bit.ly/3NE6QsD">Appium repository</a>
  * and modified to use Selenide framework.
  */
-class AndroidDragAndDropTest extends AbstractApiDemosTest {
-
+class AndroidDragAndDropTest extends BaseApiDemosTest {
   @Test
   void dragAndDrop() {
     $(By.xpath(".//*[@text='Views']")).click();
@@ -31,14 +30,5 @@ class AndroidDragAndDropTest extends AbstractApiDemosTest {
     $(dragText)
         .shouldBe(visible)
         .shouldHave(text("Dropped!"));
-  }
-
-  @Test
-   void testScrollToElement() {
-    $(By.xpath(".//*[@text='Views']")).click();
-    $(By.xpath(".//*[@text='Tabs']")).scrollTo().click();
-
-    $(By.xpath(".//*[@text='1. Content By Id']"))
-      .shouldHave(visible);
   }
 }

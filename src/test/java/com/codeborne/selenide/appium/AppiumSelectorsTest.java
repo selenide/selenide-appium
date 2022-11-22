@@ -105,7 +105,7 @@ class AppiumSelectorsTest {
 
   @Test
   void testByTagAndContentDescriptionSelector() {
-    By by = AppiumSelectors.byTagAndContentDescription("*",  "selen'ide-app'ium");
+    By by = AppiumSelectors.byTagAndContentDescription("*", "selen'ide-app'ium");
     assertThat(by)
       .isInstanceOf(By.ByXPath.class)
       .hasToString("by tag: *; by attribute: content-desc; by value: selen'ide-app'ium");

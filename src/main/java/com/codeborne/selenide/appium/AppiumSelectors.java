@@ -1,14 +1,14 @@
 package com.codeborne.selenide.appium;
 
+import com.codeborne.selenide.appium.selector.ByTagAndAttribute;
 import com.codeborne.selenide.appium.selector.ByTagAndText;
 import com.codeborne.selenide.appium.selector.ByText;
 import com.codeborne.selenide.appium.selector.WithTagAndText;
 import com.codeborne.selenide.appium.selector.WithText;
 import com.codeborne.selenide.appium.selector.ByTagAndName;
 import com.codeborne.selenide.appium.selector.ByName;
-import com.codeborne.selenide.appium.selector.WithTagAndName;
 import com.codeborne.selenide.appium.selector.WithName;
-import com.codeborne.selenide.appium.selector.ByTagAndAttribute;
+import com.codeborne.selenide.appium.selector.WithTagAndName;
 import com.codeborne.selenide.appium.selector.ByAttribute;
 import com.codeborne.selenide.appium.selector.WithTagAndAttribute;
 import com.codeborne.selenide.appium.selector.WithAttribute;
