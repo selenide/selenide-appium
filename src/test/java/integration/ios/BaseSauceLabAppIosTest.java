@@ -2,14 +2,12 @@ package integration.ios;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverProvider;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.webdriver.HttpClientTimeouts;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 
 import javax.annotation.Nonnull;
 import java.io.File;
@@ -26,7 +24,7 @@ class BaseSauceLabAppIosTest {
   @BeforeEach
   public void setUp() {
     closeWebDriver();
-    Configuration.browser = SauceLabIosAppDriverProvider.class.getName();
+    Configuration.browser = IosDriverWithSwagLabs.class.getName();
     Configuration.browserSize = null;
     Configuration.remoteConnectionTimeout = Duration.ofMinutes(5).toMillis();
     Configuration.remoteReadTimeout = Duration.ofMinutes(5).toMillis();
@@ -34,7 +32,7 @@ class BaseSauceLabAppIosTest {
   }
 }
 
-class SauceLabIosAppDriverProvider implements WebDriverProvider {
+class IosDriverWithSwagLabs implements WebDriverProvider {
   @Nonnull
   @Override
   public WebDriver createDriver(@Nonnull Capabilities capabilities) {

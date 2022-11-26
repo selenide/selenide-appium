@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static integration.Apps.downloadSauceLabAndroidApp;
 
-public abstract class BaseSwagLabsTest {
+public abstract class BaseSwagLabsAndroidTest {
   @BeforeEach
   public void setUp() {
     closeWebDriver();
