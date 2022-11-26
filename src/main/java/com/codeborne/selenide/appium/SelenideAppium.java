@@ -21,13 +21,13 @@ public class SelenideAppium {
   }
 
   public static void launchDeepLink(String deepLinkUrl, String appPackageOrBundleId) {
-    if(isNull(appPackageOrBundleId)) {
+    if (isNull(appPackageOrBundleId)) {
       throw new IllegalArgumentException("app package or bundle id cannot be null");
     }
 
-    if(isAndroidDriver()) {
+    if (isAndroidDriver()) {
       launchDeepLinkInAndroid(deepLinkUrl, appPackageOrBundleId);
-    } else if(isIosDriver()) {
+    } else if (isIosDriver()) {
       launchDeepLinkInIos(deepLinkUrl, appPackageOrBundleId);
     } else {
       throw new IllegalArgumentException("Please use Selenide.open() method for launching web urls");
