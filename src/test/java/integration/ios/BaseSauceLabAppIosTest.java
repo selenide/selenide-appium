@@ -30,8 +30,6 @@ class BaseSauceLabAppIosTest {
     Configuration.browserSize = null;
     Configuration.remoteConnectionTimeout = Duration.ofMinutes(5).toMillis();
     Configuration.remoteReadTimeout = Duration.ofMinutes(5).toMillis();
-    WebDriverRunner.addListener(new AbstractWebDriverEventListener() {
-    });
     open();
   }
 }
