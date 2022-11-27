@@ -1,6 +1,7 @@
 package com.codeborne.selenide.appium;
 
 import com.codeborne.selenide.WebDriverRunner;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.appium.WebdriverUnwrapper.cast;
 import static java.time.Duration.ofSeconds;
 import static java.util.Objects.isNull;
 
@@ -72,5 +74,22 @@ public class SelenideAppium {
 
   public static boolean isIosDriver() {
     return WebDriverRunner.getWebDriver() instanceof IOSDriver;
+  }
+
+  public static AndroidDriver getAndroidDriver() {
+    return cast(WebDriverRunner.getWebDriver(), AndroidDriver.class)
+      .orElseThrow(() -> new IllegalArgumentException("WebDriver cannot be casted to AndroidDriver"));
+  }
+
+  public static IOSDriver getIosDriver() {
+    return cast(WebDriverRunner.getWebDriver(), IOSDriver.class)
+      .orElseThrow(() -> new IllegalArgumentException("WebDriver cannot be casted to IosDriver"));
+  }
+
+  public static <T extends AppiumDriver> T getMobileDriver() {
+    if (isAndroidDriver() || isIosDriver()) {
+      throw new IllegalArgumentException("WebDriver is not instance of Android or Ios Driver");
+    }
+    return isAndroidDriver() ? (T) getAndroidDriver() : (T) getIosDriver();
   }
 }
