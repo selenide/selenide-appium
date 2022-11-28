@@ -4,7 +4,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.HashMap;
 
@@ -12,6 +11,8 @@ import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.appium.AppiumDriverRunner.getAndroidDriver;
+import static com.codeborne.selenide.appium.AppiumDriverRunner.getIosDriver;
 import static com.codeborne.selenide.appium.WebdriverUnwrapper.instanceOf;
 import static java.time.Duration.ofSeconds;
 import static java.util.Objects.isNull;
@@ -45,13 +46,13 @@ public class SelenideAppium {
   private static void terminateApp(String bundleId) {
     HashMap<String, String> params = new HashMap<>();
     params.put("bundleId", bundleId);
-    getRemoteWebDriver().executeScript("mobile: terminateApp", params);
+    getIosDriver().executeScript("mobile: terminateApp", params);
   }
 
   private static void openSafari() {
     HashMap<String, String> params = new HashMap<>();
     params.put("bundleId", "com.apple.mobilesafari");
-    getRemoteWebDriver().executeScript("mobile: launchApp", params);
+    getIosDriver().executeScript("mobile: launchApp", params);
   }
 
   private static void launchDeepLinkInAndroid(String deepLinkUrl, String appPackage) {
@@ -59,13 +60,10 @@ public class SelenideAppium {
     params.put("url", deepLinkUrl);
     params.put("package", appPackage);
 
-    getRemoteWebDriver()
+    getAndroidDriver()
       .executeScript("mobile:deepLink", params);
   }
 
-  private static RemoteWebDriver getRemoteWebDriver() {
-    return (RemoteWebDriver) WebDriverRunner.getWebDriver();
-  }
 
   public static boolean isAndroidDriver() {
     return instanceOf(WebDriverRunner.getWebDriver(), AndroidDriver.class);
