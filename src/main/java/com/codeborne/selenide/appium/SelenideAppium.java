@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.appium.WebdriverUnwrapper.instanceOf;
 import static java.time.Duration.ofSeconds;
 import static java.util.Objects.isNull;
 
@@ -67,10 +68,10 @@ public class SelenideAppium {
   }
 
   public static boolean isAndroidDriver() {
-    return WebDriverRunner.getWebDriver() instanceof AndroidDriver;
+    return instanceOf(WebDriverRunner.getWebDriver(), AndroidDriver.class);
   }
 
   public static boolean isIosDriver() {
-    return WebDriverRunner.getWebDriver() instanceof IOSDriver;
+    return instanceOf(WebDriverRunner.getWebDriver(), IOSDriver.class);
   }
 }
