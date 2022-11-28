@@ -20,7 +20,7 @@ public class CalculatorTest extends BaseIOSTest {
 
     page
       .enterTwoNumbersAndCompute("111111", "222222")
-      .verifySum("333333");
+      .verifySum("6666");
   }
 }
 
