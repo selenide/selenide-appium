@@ -2,6 +2,7 @@ package com.codeborne.selenide.appium.commands;
 
 import com.codeborne.selenide.Command;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.appium.AppiumDriverRunner;
 import com.codeborne.selenide.commands.SetValue;
 import com.codeborne.selenide.impl.WebElementSource;
 import io.appium.java_client.AppiumDriver;
@@ -11,6 +12,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import static com.codeborne.selenide.appium.SelenideAppium.isAndroidDriver;
+import static com.codeborne.selenide.appium.SelenideAppium.isIosDriver;
 import static com.codeborne.selenide.appium.WebdriverUnwrapper.instanceOf;
 import static com.google.common.base.MoreObjects.firstNonNull;
 import static java.util.Objects.requireNonNull;
@@ -27,10 +30,22 @@ public class AppiumSetValue implements Command<SelenideElement> {
       CharSequence text = firstNonNull((CharSequence) requireNonNull(args)[0], "");
       element.clear();
       element.sendKeys(text);
+      hideKeyboardIfPresent();
       return proxy;
-    }
-    else {
+    } else {
       return defaultImplementation.execute(proxy, locator, args);
+    }
+  }
+
+  private void hideKeyboardIfPresent() {
+    if (isAndroidDriver() && AppiumDriverRunner.getAndroidDriver()
+      .isKeyboardShown()) {
+      AppiumDriverRunner.getAndroidDriver()
+        .hideKeyboard();
+    } else if (isIosDriver() && AppiumDriverRunner.getAndroidDriver()
+      .isKeyboardShown()) {
+      AppiumDriverRunner.getIosDriver()
+        .hideKeyboard();
     }
   }
 }
