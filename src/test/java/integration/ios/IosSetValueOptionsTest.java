@@ -1,4 +1,4 @@
-package integration.android;
+package integration.ios;
 
 import com.codeborne.selenide.appium.AppiumClickOptions;
 import com.codeborne.selenide.appium.AppiumDriverRunner;
@@ -12,31 +12,33 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class AndroidSetValueOptionsTest extends BaseSwagLabsAndroidTest {
+class IosSetValueOptionsTest extends BaseSwagLabsAppIosTest {
 
   @Test
-  void testHideKeyboardForAndroid() {
-    SelenideAppium.openAndroidDeepLink("mydemoapprn://login", "com.saucelabs.mydemoapp.rn");
+  void testHideKeyboardForIos() throws InterruptedException {
+    SelenideAppium.openIOSDeepLink("mydemoapprn://login");
     $(AppiumBy.accessibilityId("Username input field"))
       .shouldBe(visible)
       .click(AppiumClickOptions.tap())
       .setValue(AppiumSetValueOptions.withText("abcd").hideKeyboard());
 
-    assertThat(AppiumDriverRunner.getAndroidDriver().isKeyboardShown())
+    Thread.sleep(3_000);
+    assertThat(AppiumDriverRunner.getIosDriver().isKeyboardShown())
       .isFalse();
 
     $(AppiumBy.accessibilityId("Username input field")).shouldHave(text("abcd"));
   }
 
   @Test
-  void testSetValueOptionsForAndroid() {
-    SelenideAppium.openAndroidDeepLink("mydemoapprn://login", "com.saucelabs.mydemoapp.rn");
+  void testSetValueOptionsForIos() throws InterruptedException {
+    SelenideAppium.openIOSDeepLink("mydemoapprn://login");
     $(AppiumBy.accessibilityId("Username input field"))
       .shouldBe(visible)
       .click(AppiumClickOptions.tap())
       .setValue(AppiumSetValueOptions.withText("abcd"));
 
-    assertThat(AppiumDriverRunner.getAndroidDriver().isKeyboardShown())
+    Thread.sleep(2_000);
+    assertThat(AppiumDriverRunner.getIosDriver().isKeyboardShown())
       .isTrue();
     $(AppiumBy.accessibilityId("Username input field")).shouldHave(text("abcd"));
   }
