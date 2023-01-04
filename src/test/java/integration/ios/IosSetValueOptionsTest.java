@@ -22,11 +22,9 @@ class IosSetValueOptionsTest extends BaseSwagLabsAppIosTest {
       .click(AppiumClickOptions.tap())
       .setValue(AppiumSetValueOptions.withText("abcd").hideKeyboard());
 
-    Thread.sleep(3_000);
+    $(AppiumBy.accessibilityId("Username input field")).shouldHave(text("abcd"));
     assertThat(AppiumDriverRunner.getIosDriver().isKeyboardShown())
       .isFalse();
-
-    $(AppiumBy.accessibilityId("Username input field")).shouldHave(text("abcd"));
   }
 
   @Test
@@ -37,9 +35,8 @@ class IosSetValueOptionsTest extends BaseSwagLabsAppIosTest {
       .click(AppiumClickOptions.tap())
       .setValue(AppiumSetValueOptions.withText("abcd"));
 
-    Thread.sleep(2_000);
+    $(AppiumBy.accessibilityId("Username input field")).shouldHave(text("abcd"));
     assertThat(AppiumDriverRunner.getIosDriver().isKeyboardShown())
       .isTrue();
-    $(AppiumBy.accessibilityId("Username input field")).shouldHave(text("abcd"));
   }
 }
