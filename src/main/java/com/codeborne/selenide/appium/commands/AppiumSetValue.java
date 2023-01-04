@@ -32,7 +32,11 @@ public class AppiumSetValue implements Command<SelenideElement> {
       element.sendKeys(text);
 
       if (appiumSetValueOptions.shouldHideKeyboard()) {
-        hideKeyBoard();
+        if (AppiumDriverRunner.isAndroidDriver()) {
+          hideKeyBoardForAndroid();
+        } else if (AppiumDriverRunner.isIosDriver()) {
+          hideKeyBoardForIos(proxy);
+        }
       }
       return proxy;
     } else {
@@ -49,11 +53,15 @@ public class AppiumSetValue implements Command<SelenideElement> {
     }
   }
 
-  private void hideKeyBoard() {
-    if (AppiumDriverRunner.isAndroidDriver() && AppiumDriverRunner.getAndroidDriver().isKeyboardShown()) {
+  private void hideKeyBoardForAndroid() {
+    if (AppiumDriverRunner.getAndroidDriver().isKeyboardShown()) {
       AppiumDriverRunner.getAndroidDriver().hideKeyboard();
-    } else if (AppiumDriverRunner.isIosDriver() && AppiumDriverRunner.getIosDriver().isKeyboardShown()) {
-      AppiumDriverRunner.getIosDriver().hideKeyboard();
+    }
+  }
+
+  private void hideKeyBoardForIos(SelenideElement proxy) {
+    if (AppiumDriverRunner.getIosDriver().isKeyboardShown()) {
+      proxy.sendKeys("\n");
     }
   }
 }

@@ -86,6 +86,13 @@ boolean isAndroid = AppiumDriverRunner.isAndroidDriver();
 boolean isIos = AppiumDriverRunner.isIosDriver();
 ```
 
+5. Wish to hide keyboard after entering value to textbox
+
+```
+$(AppiumBy.accessibilityId("Username input field"))
+      .shouldBe(visible)
+      .setValue(withText("abcd").hideKeyboard());
+```
 ### Changelog
 
 Here is [CHANGELOG](https://github.com/selenide/selenide-appium/blob/main/CHANGELOG)

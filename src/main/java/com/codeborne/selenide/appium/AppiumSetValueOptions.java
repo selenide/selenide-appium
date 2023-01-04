@@ -1,12 +1,14 @@
 package com.codeborne.selenide.appium;
 
-public class AppiumSetValueOptions {
+import com.codeborne.selenide.SetValueMethod;
+import com.codeborne.selenide.SetValueOptions;
 
-  private final CharSequence value;
+public class AppiumSetValueOptions extends SetValueOptions {
+
   private boolean shouldHideKeyboard;
 
   private AppiumSetValueOptions(CharSequence value, boolean shouldHideKeyboard) {
-    this.value = value;
+    super(SetValueMethod.SEND_KEYS, value, value);
     this.shouldHideKeyboard = shouldHideKeyboard;
   }
 
@@ -14,12 +16,9 @@ public class AppiumSetValueOptions {
     return new AppiumSetValueOptions(textToEnter, false);
   }
 
-  public void hideKeyboard() {
+  public AppiumSetValueOptions hideKeyboard() {
     this.shouldHideKeyboard = true;
-  }
-
-  public CharSequence value() {
-    return value;
+    return this;
   }
 
   public boolean shouldHideKeyboard() {
