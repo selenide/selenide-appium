@@ -14,8 +14,9 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'corretto'
-          java-version: '8'
+          distribution: 'temurin'
+          cache: 'gradle'
+          java-version: '11'
       - uses: actions/cache@v3
         with:
           path: |
@@ -145,8 +146,9 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'corretto'
-          java-version: '8'
+          distribution: 'temurin'
+          cache: 'gradle'
+          java-version: '11'
       - name: Run iOS tests
         run: ./gradlew ios --no-daemon --console=plain -i
       - uses: actions/upload-artifact@v3
