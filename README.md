@@ -86,6 +86,34 @@ boolean isAndroid = AppiumDriverRunner.isAndroidDriver();
 boolean isIos = AppiumDriverRunner.isIosDriver();
 ```
 
+4. Rich Assertions
+
+In Appium, it is common that we want to extract values from different attributes.
+
+_Appium way:_
+```java
+public String getAttribute(){
+  return driver instance of AndroidDriver 
+    ? mobileELement.getAttribute("content-desc")
+    : mobileELement.getAttribute("name")
+  }
+  
+//Assertion in test
+Assertions.assertThat(getAttribute()).isEqualTo("expected-value")  
+```
+_Selenide-Appium way:_
+```
+$(mobileElement)
+      .shouldHave(AppiumCondition.attributeWithValue("content-desc", "name", "expected-value"));
+```
+
+We can also assert collection
+```java
+List<String> expectedList = Arrays.asList("API Demos", "KeyEventText", "Linkify", "LogTextBox", "Marquee", "Unicode");
+
+$$(AppiumBy.xpath("//android.widget.TextView"))
+      .shouldHave(AppiumCollectionCondition.exactAttributes("text", "name", expectedList));
+```
 ### Changelog
 
 Here is [CHANGELOG](https://github.com/selenide/selenide-appium/blob/main/CHANGELOG)
