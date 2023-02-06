@@ -10,11 +10,13 @@ public class AppiumCollectionCondition {
   private AppiumCollectionCondition() {
   }
 
-  public static CollectionCondition exactAttributes(String androidAttributeName, String iosAttributeName, String... expectedAttributeValues) {
+  public static CollectionCondition exactAttributes(String androidAttributeName, String iosAttributeName,
+                                                    String... expectedAttributeValues) {
     return new AppiumAttributeValues(androidAttributeName, iosAttributeName, expectedAttributeValues);
   }
 
-  public static CollectionCondition exactAttributes(String androidAttributeName, String iosAttributeName, List<String> expectedAttributeValues) {
+  public static CollectionCondition exactAttributes(String androidAttributeName, String iosAttributeName,
+                                                    List<String> expectedAttributeValues) {
     return new AppiumAttributeValues(androidAttributeName, iosAttributeName, expectedAttributeValues);
   }
 }
