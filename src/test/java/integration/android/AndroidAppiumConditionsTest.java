@@ -24,7 +24,7 @@ class AndroidAppiumConditionsTest extends BaseApiDemosTest {
   }
 
   @Test
-  void testAppiumCollectionConditionAttribute() {
+  void appiumCollectionConditionAttribute() {
 
     List<String> expectedList =
       Arrays.asList("API Demos", "KeyEventText", "Linkify", "LogTextBox", "Marquee", "Unicode");
@@ -35,7 +35,7 @@ class AndroidAppiumConditionsTest extends BaseApiDemosTest {
   }
 
   @Test
-  void testAppiumConditionAttribute() {
+  void appiumConditionAttribute() {
 
     $(AppiumBy.accessibilityId("Accessibility"))
       .shouldHave(AppiumCondition.attributeWithValue("content-desc", "name", "Accessibility"));
