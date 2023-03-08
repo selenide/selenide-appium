@@ -4,9 +4,7 @@ import com.codeborne.selenide.appium.AppiumDriverRunner;
 import com.codeborne.selenide.collections.ExactTexts;
 import org.openqa.selenium.WebElement;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -51,9 +49,14 @@ public class AppiumAttributeValues extends ExactTexts {
   }
 
   private Function<WebElement, String> getFunctionBasedOnMobileOs() {
-    Map<Boolean, Function<WebElement, String>> map = new HashMap<>();
-    map.put(true, element -> element.getAttribute(androidAttributeName));
-    map.put(false, element -> element.getAttribute(iosAttributeName));
-    return map.get(AppiumDriverRunner.isAndroidDriver());
+    if (AppiumDriverRunner.isAndroidDriver()) {
+      return element -> element.getAttribute(androidAttributeName);
+    } else if (AppiumDriverRunner.isIosDriver()) {
+      return element -> element.getAttribute(androidAttributeName);
+    } else {
+      throw new IllegalArgumentException
+        ("Appium Collection Condition is only applicable for android and ios driver. " +
+           "Please use Condition class instead.");
+    }
   }
 }
