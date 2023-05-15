@@ -106,7 +106,7 @@ jobs:
       - name: Setup iOS simulator
         uses: futureware-tech/simulator-action@v2
         with:
-          model: 'iPhone 14'
+          model: 'iPhone 12'
           os: 'iOS'
           os_version: '16.2'
       - name: Setup NodeJS
