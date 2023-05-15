@@ -51,7 +51,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
       - name: Install Appium
         run: |
           npm install -g appium@next
@@ -108,7 +108,7 @@ jobs:
         with:
           model: 'iPhone 14'
           os: 'iOS'
-          os_version: '16.4.1'
+          os_version: '16.2'
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
