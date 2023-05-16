@@ -26,7 +26,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Run checks and unit tests
-        run: ./gradlew check --no-daemon --console=plain -i
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: check --no-daemon --console=plain -i
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
@@ -155,7 +157,9 @@ jobs:
           cache: 'gradle'
           java-version: '11'
       - name: Run iOS tests
-        run: ./gradlew ios --no-daemon --console=plain -i
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: ios --no-daemon --console=plain -i
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
