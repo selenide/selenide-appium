@@ -24,7 +24,7 @@ import static java.time.Duration.ofSeconds;
 
 @ParametersAreNonnullByDefault
 public class DeepLinkLauncher {
-  public static Duration SAFARI_ELEMENTS_TIMEOUT = ofSeconds(30);
+  private static final Duration SAFARI_ELEMENTS_TIMEOUT = ofSeconds(30);
   private static final String SAFARI_BUNDLE_ID = "com.apple.mobilesafari";
 
   // adopted from https://bit.ly/3OKVsvq
