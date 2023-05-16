@@ -1,27 +1,30 @@
 package com.codeborne.selenide.appium;
 
-import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.appium.WebdriverUnwrapper.cast;
-import static io.appium.java_client.AppiumBy.iOSNsPredicateString;
-import static io.appium.java_client.ios.options.wda.SupportsAutoAcceptAlertsOption.AUTO_ACCEPT_ALERTS_OPTION;
-
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.HasOnScreenKeyboard;
-import java.time.Duration;
-import java.util.Map;
-import javax.annotation.ParametersAreNonnullByDefault;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.HasCapabilities;
 import org.slf4j.helpers.CheckReturnValue;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.time.Duration;
+import java.util.Map;
+
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.interactable;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.appium.WebdriverUnwrapper.cast;
+import static io.appium.java_client.AppiumBy.iOSNsPredicateString;
+import static io.appium.java_client.ios.options.wda.SupportsAutoAcceptAlertsOption.AUTO_ACCEPT_ALERTS_OPTION;
+import static java.time.Duration.ofSeconds;
+
 @ParametersAreNonnullByDefault
 public class DeepLinkLauncher {
-  public static Duration SAFARI_ELEMENTS_TIMEOUT = Duration.ofSeconds(30);
+  public static Duration SAFARI_ELEMENTS_TIMEOUT = ofSeconds(30);
   private static final String SAFARI_BUNDLE_ID = "com.apple.mobilesafari";
 
   // adopted from https://bit.ly/3OKVsvq
@@ -40,7 +43,7 @@ public class DeepLinkLauncher {
       // Wait for the url button to appear and click on it so the text field will appear
       // iOS 13 now has the keyboard open by default because the URL field has focus when opening the Safari browser
       if (!keyboard.isKeyboardShown()) {
-        addressBar.click();
+        addressBar.shouldBe(interactable, ofSeconds(10)).click();
       }
       // Submit the url and add a break
       urlField.shouldBe(visible, SAFARI_ELEMENTS_TIMEOUT).setValue(deepLinkUrl + "\uE007");

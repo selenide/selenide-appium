@@ -4,8 +4,10 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.interactable;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
+import static java.time.Duration.ofSeconds;
 
 public class CalculatorPage {
   private final By firstNumber = By.name("IntegerA");
@@ -22,7 +24,7 @@ public class CalculatorPage {
 
   public CalculatorPage typeFirstNumber(String number) {
     SelenideElement firstNoElement = $(firstNumber);
-    firstNoElement.setValue(number);
+    firstNoElement.shouldBe(interactable, ofSeconds(10)).setValue(number);
     return this;
   }
 
