@@ -50,22 +50,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Install Appium
-        run: |
-          npm install -g appium@next
-          npm install -g appium-doctor
-      - name: Start Appium server
-        run: |
-          cwd=$(pwd)
-          pushd "$cwd"
-          cd ~
-          appium driver install uiautomator2
-          appium-doctor
-          nohup appium \
-            --base-path /wd/hub \
-            --relaxed-security \
-            2>&1 > "$cwd/appium.log" &
-          popd
+      - name: Appium Server Action
+        uses: moatazeldebsy/Appium-Server-GitHub-Action@V1.0.7
       - name: Wait for Appium server startup
         run: |
           seconds_started=$(date +%s)
@@ -117,29 +103,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Install Appium
-        run: |
-          npm install -g appium@next
-          npm install -g appium-doctor
+      - name: Appium Server Action
+        uses: moatazeldebsy/Appium-Server-GitHub-Action@V1.0.7
       - name: Log Xcode Version
         run: xcodebuild -version
       - name: Log Installed Simulators
         run: xcrun simctl list
       - name: Log Runtimes
         run: xcrun simctl list runtimes
-      - name: Start Appium server
-        run: |
-          cwd=$(pwd)
-          pushd "$cwd"
-          cd ~
-          appium driver install xcuitest
-          appium driver install safari
-          appium-doctor
-          nohup appium \
-            --base-path /wd/hub \
-            --relaxed-security \
-            2>&1 > "$cwd/appium.log" &
-          popd
       - name: Wait for Appium server startup
         run: |
           seconds_started=$(date +%s)
