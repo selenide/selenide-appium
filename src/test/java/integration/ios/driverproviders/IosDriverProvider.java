@@ -40,7 +40,7 @@ public abstract class IosDriverProvider implements WebDriverProvider {
   protected XCUITestOptions getXcuiTestOptions() {
     XCUITestOptions options = new XCUITestOptions();
     // on GitHub actions, first test run maybe extremely slow
-    options.setWdaLaunchTimeout(Duration.ofSeconds(30));
+    options.setWdaLaunchTimeout(Duration.ofMinutes(10));
     options.setDeviceName("iPhone 12");
     options.setFullReset(false);
     return options;
