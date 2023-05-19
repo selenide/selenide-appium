@@ -17,14 +17,6 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
           java-version: '11'
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
       - name: Run checks and unit tests
         run: ./gradlew check --no-daemon --console=plain -i
       - uses: actions/upload-artifact@v3
@@ -48,6 +40,12 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
           java-version: '11'
+      - uses: actions/cache@v3
+        with:
+          path: build/apps
+          key: ${{ runner.os }}-android-tests-${{ hashFiles('**/*.zip*') }}
+          restore-keys: |
+            ${{ runner.os }}-android-tests-
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
@@ -109,6 +107,12 @@ jobs:
           model: 'iPhone 12'
           os: 'iOS'
           os_version: '15.2'
+      - uses: actions/cache@v3
+        with:
+          path: build/apps
+          key: ${{ runner.os }}-ios-tests-${{ hashFiles('**/*.zip*') }}
+          restore-keys: |
+            ${{ runner.os }}-ios-tests-
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
