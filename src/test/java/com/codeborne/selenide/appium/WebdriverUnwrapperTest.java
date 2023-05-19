@@ -224,7 +224,7 @@ class FakeIOSDriver extends IOSDriver {
 
   private static URL getUrl() {
     try {
-      return new URL("http://localhost:4723/");
+      return new URL("http://127.0.0.1:4723/");
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }

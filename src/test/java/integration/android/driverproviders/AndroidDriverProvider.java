@@ -41,7 +41,7 @@ public abstract class AndroidDriverProvider implements WebDriverProvider {
 
   private static URL url() {
     try {
-      return new URL("http://localhost:4723/wd/hub");
+      return new URL("http://127.0.0.1:4723/wd/hub");
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }
