@@ -19,6 +19,10 @@ public class SelenideAppium {
   private static final AppiumNavigator appiumNavigator = new AppiumNavigator();
   private static final DeepLinkLauncher deepLinkLauncher = new DeepLinkLauncher();
 
+  private SelenideAppium() {
+
+  }
+
   /**
    * The main starting point in your tests.
    * Launch a mobile application. Do nothing if driver already created.
@@ -66,18 +70,6 @@ public class SelenideAppium {
 
   @CheckReturnValue
   @Nonnull
-  public static SelenideAppiumElement $(String cssSelector) {
-    return $(cssSelector, 0);
-  }
-
-  @CheckReturnValue
-  @Nonnull
-  public static SelenideAppiumElement $(String cssSelector, int index) {
-    return $(By.cssSelector(cssSelector), index);
-  }
-
-  @CheckReturnValue
-  @Nonnull
   public static SelenideAppiumElement $x(String xpathExpression) {
     return $(By.xpath(xpathExpression), 0);
   }
@@ -94,4 +86,11 @@ public class SelenideAppium {
     return ElementFinder.wrap(driver(), SelenideAppiumElement.class, null, seleniumSelector, index);
   }
 
+  @CheckReturnValue
+  @Nonnull
+  public static SelenideAppiumElement $(By androidSelector, By iosSelector) {
+    return AppiumDriverRunner.isAndroidDriver()
+      ? $(androidSelector, 0)
+      : $(iosSelector, 0);
+  }
 }

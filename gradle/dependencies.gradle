@@ -1,10 +1,10 @@
 ext {
-  selenideVersion = '6.11.3-SNAPSHOT'
-  appiumVersion = '8.3.0'
-  junitVersion = '5.9.2'
+  selenideVersion = '6.14.1'
+  appiumVersion = '8.5.0'
+  junitVersion = '5.9.3'
   assertjVersion = '3.24.2'
-  mockitoVersion = '5.1.1'
-  slf4jVersion = '2.0.6'
+  mockitoVersion = '5.3.1'
+  slf4jVersion = '2.0.7'
 }
 
 dependencies {
@@ -15,7 +15,7 @@ dependencies {
     exclude group: 'org.seleniumhq'
     exclude group: 'cglib'
   }
-  implementation('commons-io:commons-io:2.11.0')
+  implementation('commons-io:commons-io:2.12.0')
   testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
   testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
   testImplementation("org.assertj:assertj-core:$assertjVersion")

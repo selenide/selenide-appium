@@ -1,14 +1,14 @@
 plugins {
   id 'java-library'
   id 'checkstyle'
-  id 'com.github.spotbugs' version '5.0.13'
+  id 'com.github.spotbugs' version '5.0.14'
 }
 
 defaultTasks 'check', 'test', 'publishToMavenLocal'
 
 group = 'com.codeborne'
 description = 'Selenide adaptor for Appium framework'
-version = '2.5.3-SNAPSHOT'
+version = '2.8.0'
 
 tasks.withType(Test) {
   useJUnitPlatform()

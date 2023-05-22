@@ -8,10 +8,13 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class SelenideAppiumCommands extends Commands {
   public SelenideAppiumCommands() {
     add("dragAndDropTo", new AppiumDragAndDropTo());
+    add("dragAndDrop", new AppiumDragAndDropTo());
     add("click", new AppiumClick());
     add("clear", new AppiumClear());
     add("setValue", new AppiumSetValue());
     add("val", new AppiumVal());
     add("hideKeyboard", new HideKeyboard());
+    add("scrollTo", new AppiumScrollTo());
+    add("scroll", new AppiumScrollTo());
   }
 }
