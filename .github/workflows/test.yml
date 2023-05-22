@@ -88,7 +88,7 @@ jobs:
             appium.log
 
   run-ios-tests:
-    runs-on: macOS-11
+    runs-on: macOS-12
     env:
       APPIUM_TEST_SERVER_PORT: 4723
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
@@ -98,9 +98,9 @@ jobs:
       - name: Setup iOS simulator
         uses: futureware-tech/simulator-action@v2
         with:
-          model: 'iPhone 12'
+          model: 'iPhone 14'
           os: 'iOS'
-          os_version: '15.2'
+          os_version: '16.2'
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:

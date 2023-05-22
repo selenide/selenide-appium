@@ -26,7 +26,6 @@ public abstract class IosDriverProvider implements WebDriverProvider {
     HttpClientTimeouts.defaultLocalReadTimeout = Duration.ofSeconds(20);
     XCUITestOptions options = getXcuiTestOptions();
     options.setApp(getApplicationUnderTest().getAbsolutePath());
-    options.setCapability("appium:showXcodeLog", true);
     try {
       return new IOSDriver(url(), options);
     } catch (SessionNotCreatedException e) {
@@ -42,7 +41,7 @@ public abstract class IosDriverProvider implements WebDriverProvider {
     XCUITestOptions options = new XCUITestOptions();
     // on GitHub actions, first test run maybe extremely slow
     options.setWdaLaunchTimeout(Duration.ofMinutes(10));
-    options.setDeviceName("iPhone 12");
+    options.setDeviceName("iPhone 14");
     options.setFullReset(false);
     return options;
   }
