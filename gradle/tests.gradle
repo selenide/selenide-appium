@@ -3,13 +3,13 @@ test {
 }
 
 task android(type: Test) {
-  include 'integration/android/**/*AndroidSelectorsTest*'
+  include 'integration/android/**/*'
   exclude 'com/codeborne/selenide/**/*'
   outputs.upToDateWhen { false }
 }
 
 task ios(type: Test) {
-  include 'integration/ios/**/*CalculatorTest*'
+  include 'integration/ios/**/*'
   exclude 'com/codeborne/selenide/**/*'
   outputs.upToDateWhen { false }
 }
