@@ -26,6 +26,7 @@ public abstract class IosDriverProvider implements WebDriverProvider {
     HttpClientTimeouts.defaultLocalReadTimeout = Duration.ofSeconds(20);
     XCUITestOptions options = getXcuiTestOptions();
     options.setApp(getApplicationUnderTest().getAbsolutePath());
+    options.setCapability("appium:showXcodeLog", true);
     try {
       return new IOSDriver(url(), options);
     } catch (SessionNotCreatedException e) {
