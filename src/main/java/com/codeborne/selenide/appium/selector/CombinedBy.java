@@ -14,24 +14,24 @@ import static com.codeborne.selenide.appium.AppiumDriverRunner.isIosDriver;
 import static java.util.Objects.requireNonNull;
 
 @ParametersAreNonnullByDefault
-public class MobileBy extends By {
+public class CombinedBy extends By {
   @Nullable
-  private By androidSelector;
+  private final By androidSelector;
 
   @Nullable
-  private By iosSelector;
+  private final By iosSelector;
 
-  private MobileBy(@Nullable By androidSelector, @Nullable By iosSelector) {
+  private CombinedBy(@Nullable By androidSelector, @Nullable By iosSelector) {
     this.androidSelector = androidSelector;
     this.iosSelector = iosSelector;
   }
 
-  public static MobileBy android(By android) {
-    return new MobileBy(android, null);
+  public static CombinedBy android(By android) {
+    return new CombinedBy(android, null);
   }
 
-  public MobileBy ios(By ios) {
-    return new MobileBy(androidSelector, ios);
+  public CombinedBy ios(By ios) {
+    return new CombinedBy(androidSelector, ios);
   }
 
   @Override

@@ -21,7 +21,7 @@ import static com.codeborne.selenide.appium.AppiumSelectors.withTagAndText;
 import static com.codeborne.selenide.appium.AppiumSelectors.withText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static com.codeborne.selenide.appium.SelenideAppium.back;
-import static com.codeborne.selenide.appium.selector.MobileBy.android;
+import static com.codeborne.selenide.appium.selector.CombinedBy.android;
 
 class AndroidSelectorsTest extends BaseApiDemosTest {
 
