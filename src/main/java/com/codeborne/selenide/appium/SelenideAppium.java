@@ -85,5 +85,4 @@ public class SelenideAppium {
   public static SelenideAppiumElement $(By seleniumSelector, int index) {
     return ElementFinder.wrap(driver(), SelenideAppiumElement.class, null, seleniumSelector, index);
   }
-
 }

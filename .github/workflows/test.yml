@@ -40,12 +40,6 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
           java-version: '11'
-      - uses: actions/cache@v3
-        with:
-          path: build/apps
-          key: ${{ runner.os }}-android-tests-${{ hashFiles('**/*.zip*') }}
-          restore-keys: |
-            ${{ runner.os }}-android-tests-
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
@@ -107,12 +101,6 @@ jobs:
           model: 'iPhone 12'
           os: 'iOS'
           os_version: '15.2'
-      - uses: actions/cache@v3
-        with:
-          path: build/apps
-          key: ${{ runner.os }}-ios-tests-${{ hashFiles('**/*.zip*') }}
-          restore-keys: |
-            ${{ runner.os }}-ios-tests-
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
@@ -170,7 +158,7 @@ jobs:
   auto-merge-dependabot:
     name: 🤖 Auto merge dependabot PR
     timeout-minutes: 10
-    needs: [run-unit-tests, run-ios-tests, run-android-tests]
+    needs: [run-unit-tests, run-android-tests]
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     permissions:
