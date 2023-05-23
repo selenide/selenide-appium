@@ -1,5 +1,9 @@
 == Changelog
 
+=== 2.8.2 (released 2x.05.2023)
+Project "selenide-appium" was merged into project "selenide".
+Now you will need to use dependency "com.codeborne:selenide-appium:6.15.0" or higher.
+
 === 2.8.1 (released 22.05.2023)
 * Fix $.click(options) in web browser
 
